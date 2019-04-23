@@ -74,4 +74,4 @@ To break this down a bit, what you are doing is specifying the fully qualified t
 
 ### Sample application
 
-A basic console app is provides as a sample.
+A basic [console app](https://github.com/cocowalla/serilog-sinks-file-header/tree/master/sample/Serilog.Sinks.File.Header.Sample) is provides as a sample.
