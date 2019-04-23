@@ -2,7 +2,7 @@
 [![NuGet](https://img.shields.io/nuget/v/Serilog.Sinks.File.Header.svg)](https://www.nuget.org/packages/Serilog.Sinks.File.Header)
 [![Build status](https://ci.appveyor.com/api/projects/status/initq19hswan7q4u?svg=true)](https://ci.appveyor.com/project/cocowalla/serilog-sinks-file-header)
 
-A `FileLifecycleHooks`-based plugin for the [Serilog File Sink](https://github.com/serilog/serilog-sinks-file) that writes a configurable header at the start of each lof file.
+A `FileLifecycleHooks`-based plugin for the [Serilog File Sink](https://github.com/serilog/serilog-sinks-file) that writes a configurable header at the start of each log file.
 
 ### Getting started
 
