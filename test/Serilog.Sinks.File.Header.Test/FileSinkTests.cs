@@ -59,7 +59,7 @@ namespace Serilog.Sinks.File.Header.Tests
                 var path = temp.AllocateFilename("txt");
 
                 // Write something to the start of the log file
-                System.IO.File.WriteAllText(path, "Myergen");
+                System.IO.File.WriteAllText(path, "Myergen\n");
 
                 using (var log = new LoggerConfiguration()
                     .WriteTo.File(Path.Combine(path), hooks: headerWriter)
@@ -71,13 +71,56 @@ namespace Serilog.Sinks.File.Header.Tests
                 // Read the contents of the file that was written
                 var lines = path.ReadAllLines();
 
-                // File should contain only the 3 log events
-                lines.Count.ShouldBe(logEvents.Length);
+                // File should contain the content line and the 3 log events
+                lines.Count.ShouldBe(1 + logEvents.Length);
+
+                // Ensure the file begins with the content we added
+                lines[0].ShouldBe("Myergen");
 
                 // Ensure all the log events were written as normal
                 for (var i = 0; i < logEvents.Length; i++)
                 {
-                    lines[i].ShouldEndWith(logEvents[i].MessageTemplate.Text);
+                    lines[i + 1].ShouldEndWith(logEvents[i].MessageTemplate.Text);
+                }
+            }
+        }
+
+        // If the log file already contains anything, ensure we write the header if
+        // the alwaysWriteHeader option was used
+        [Fact]
+        public void Should_write_header_to_non_empty_stream_is_required()
+        {
+            var headerWriter = new HeaderWriter(W3C_HEADER, true);
+
+            var logEvents = Some.LogEvents(3);
+
+            using (var temp = TempFolder.ForCaller())
+            {
+                var path = temp.AllocateFilename("txt");
+
+                // Write something to the start of the log file
+                System.IO.File.WriteAllText(path, "Myergen\n");
+
+                using (var log = new LoggerConfiguration()
+                    .WriteTo.File(Path.Combine(path), hooks: headerWriter)
+                    .CreateLogger())
+                {
+                    log.WriteAll(logEvents);
+                }
+
+                // Read the contents of the file that was written
+                var lines = path.ReadAllLines();
+
+                // File should contain the content line, our header line, and the 3 log events,
+                lines.Count.ShouldBe(1 + 1 + logEvents.Length);
+
+                // Ensure the file contains the header
+                lines[1].ShouldBe(W3C_HEADER);
+
+                // Ensure all the log events were written as normal
+                for (var i = 0; i < logEvents.Length; i++)
+                {
+                    lines[i + 2].ShouldEndWith(logEvents[i].MessageTemplate.Text);
                 }
             }
         }
