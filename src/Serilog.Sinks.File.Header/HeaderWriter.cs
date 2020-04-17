@@ -16,6 +16,8 @@ namespace Serilog.Sinks.File.Header
 
         private readonly Func<string> headerFactory;
 
+        public bool SkipStreamLengthCheck { get; set; }
+
         public HeaderWriter(string header)
         {
             this.headerFactory = () => header;
@@ -28,7 +30,7 @@ namespace Serilog.Sinks.File.Header
 
         public override Stream OnFileOpened(Stream underlyingStream, Encoding encoding)
         {
-			if (underlyingStream.Length != 0)
+            if (!this.SkipStreamLengthCheck && underlyingStream.Length != 0)
 			{
 				SelfLog.WriteLine($"File header will not be written, as the stream already contains {underlyingStream.Length} bytes of content");
                 return base.OnFileOpened(underlyingStream, encoding);
