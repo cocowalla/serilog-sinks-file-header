@@ -2,7 +2,8 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFrameworks>net462;netcoreapp2.2;netcoreapp3.0</TargetFrameworks>
+        <TargetFrameworks>net462;netcoreapp2.2;netcoreapp3.1</TargetFrameworks>
+        <AssemblyName>Serilog.Sinks.File.Header.Sample</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
