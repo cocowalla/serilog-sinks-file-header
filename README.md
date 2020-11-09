@@ -69,7 +69,7 @@ To break this down a bit, what you are doing is specifying the fully qualified t
 ### Sample applications
 2 basic console apps are provided as samples:
 
-- [Serilog.Sinks.File.Header.Sample](https://github.com/cocowalla/serilog-sinks-file-header/tree/master/sample/Serilog.Sinks.File.Header.Sample) demonstrates writing tab-delimited logs with a header row, configured programmatically
+- [Serilog.Sinks.File.Header.Sample](https://github.com/cocowalla/serilog-sinks-file-header/tree/master/sample/Serilog.Sinks.File.Header.Sample): demonstrates writing tab-delimited logs with a header row, configured programmatically
 - [Serilog.Sinks.File.Header.ConfigSample](https://github.com/cocowalla/serilog-sinks-file-header/tree/master/sample/Serilog.Sinks.File.Header.ConfigSample): demonstrates writing CSV-formatted logs with a header row, configured from appsettings.json
 
 In both projects, logs are written to files in `.\Logs`.
