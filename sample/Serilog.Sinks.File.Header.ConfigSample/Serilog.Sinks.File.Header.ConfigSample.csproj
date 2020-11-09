@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFrameworks>net462;netcoreapp2.2;netcoreapp3.1</TargetFrameworks>
-        <AssemblyName>Serilog.Sinks.File.Header.Sample</AssemblyName>
+        <TargetFrameworks>net462;netcoreapp3.1</TargetFrameworks>
+        <AssemblyName>Serilog.Sinks.File.Header.ConfigSample</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,6 +12,8 @@
 
     <ItemGroup>
         <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+        <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.9" />
     </ItemGroup>
 
     <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
@@ -19,5 +21,11 @@
         <Reference Include="System.Core" />
         <Reference Include="Microsoft.CSharp" />
     </ItemGroup>
-
+    
+    <ItemGroup>
+        <None Update="appsettings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    
 </Project>

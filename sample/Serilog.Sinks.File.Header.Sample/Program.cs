@@ -4,7 +4,7 @@ using Serilog.Debugging;
 namespace Serilog.Sinks.File.Header.Sample
 {
     /// <summary>
-    /// Sample that demonstrates writing a tab-delimited header and logs
+    /// Sample that demonstrates writing tab-delimited logs with a header row, configured programmatically
     /// </summary>
     internal static class Program
     {

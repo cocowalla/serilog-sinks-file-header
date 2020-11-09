@@ -32,7 +32,7 @@ Log.Logger = new LoggerConfiguration()
 ```
 
 ### JSON appsettings.json configuration
-It's also possible to enable log file headers  when configuring Serilog from a configuration file using [Serilog.Settings.Configuration](https://github.com/serilog/serilog-settings-configuration/). To do this, you will first need to create a public static class that can provide the configuration system with a configured instance of `HeaderWriter`:
+It's also possible to enable log file headers  when configuring Serilog from a configuration file using [Serilog.Settings.Configuration](https://github.com/serilog/serilog-settings-configuration/). To do this, you will first need to create a class with a public static member that can provide the configuration system with a configured instance of `HeaderWriter`:
 
 ```csharp
 using Serilog.Sinks.File.Header;
@@ -55,7 +55,7 @@ The `hooks` argument in Your `appsettings.json` file should be configured as fol
       {
         "Name": "File",
         "Args": {
-          "path": "log.gz",
+          "path": "log.csv",
           "hooks": "MyApp.Logging.SerilogHooks::MyHeaderWriter, MyApp"
         }
       }
@@ -64,10 +64,15 @@ The `hooks` argument in Your `appsettings.json` file should be configured as fol
 }
 ```
 
-To break this down a bit, what you are doing is specifying the fully qualified type name of the static class that provides your `HeaderWriter`, using `Serilog.Settings.Configuration`'s special `::` syntax to point to the `MyHeaderWriter` member.
+To break this down a bit, what you are doing is specifying the fully qualified type name of the class that provides your `HeaderWriter`, using `Serilog.Settings.Configuration`'s special `::` syntax to point to the `MyHeaderWriter` member.
 
-### Sample application
-A basic [console app](https://github.com/cocowalla/serilog-sinks-file-header/tree/master/sample/Serilog.Sinks.File.Header.Sample) is provides as a sample.
+### Sample applications
+2 basic console apps are provided as samples:
+
+- [Serilog.Sinks.File.Header.Sample](https://github.com/cocowalla/serilog-sinks-file-header/tree/master/sample/Serilog.Sinks.File.Header.Sample): demonstrates writing tab-delimited logs with a header row, configured programmatically
+- [Serilog.Sinks.File.Header.ConfigSample](https://github.com/cocowalla/serilog-sinks-file-header/tree/master/sample/Serilog.Sinks.File.Header.ConfigSample): demonstrates writing CSV-formatted logs with a header row, configured from appsettings.json
+
+In both projects, logs are written to files in `.\Logs`.
 
 ### About `FileLifecycleHooks`
 `FileLifecycleHooks` is a Serilog File Sink mechanism that allows hooking into log file lifecycle events, enabling scenarios such as wrapping the Serilog output stream in another stream, or capturing files before they are deleted by Serilog's retention mechanism.
