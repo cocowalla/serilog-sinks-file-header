@@ -8,7 +8,7 @@ A `FileLifecycleHooks`-based plugin for the [Serilog File Sink](https://github.c
 To get started, install the latest [Serilog.Sinks.File.Header](https://www.nuget.org/packages/Serilog.Sinks.File.Header) package from NuGet:
 
 ```powershell
-Install-Package Serilog.Sinks.File.Header -Version 1.0.1
+Install-Package Serilog.Sinks.File.Header -Version 1.1.0
 ```
 
 To enable writing a header, use one of the new `LoggerSinkConfiguration` extensions that has a `FileLifecycleHooks` argument, and create a new `HeaderWriter`:

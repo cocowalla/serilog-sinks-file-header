@@ -2,20 +2,17 @@
 
     <PropertyGroup>
         <Description>Plugin for the Serilog File sink that writes a configurable header at the start of each log file.</Description>
-        <VersionPrefix>1.0.2</VersionPrefix>
+        <VersionPrefix>1.1.0</VersionPrefix>
         <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
         <Authors>Colin Anderson</Authors>
         <Copyright>Copyright © Colin Anderson 2019</Copyright>
-        <TargetFrameworks>net45;netstandard1.6;netstandard2.0;netstandard2.1</TargetFrameworks>
+        <TargetFrameworks>net462;net471;netstandard2.0;net6.0;net8.0;net9.0</TargetFrameworks>
         <AssemblyName>Serilog.Sinks.File.Header</AssemblyName>
         <RootNamespace>Serilog.Sinks.File.Header</RootNamespace>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <RepositoryUrl>https://github.com/cocowalla/serilog-sinks-file-header</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <GenerateDocumentationFile>false</GenerateDocumentationFile>
-
-        <!-- Don't reference the full NETStandard.Library -->
-        <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -28,12 +25,6 @@
 
     <ItemGroup>
         <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
-    </ItemGroup>
-
-    <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-        <Reference Include="System" />
-        <Reference Include="System.Core" />
-        <Reference Include="Microsoft.CSharp" />
     </ItemGroup>
 
 </Project>
