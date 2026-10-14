@@ -20,6 +20,7 @@
         <PackageTags>serilog;file;logging;header</PackageTags>
         <PackageProjectUrl>https://github.com/cocowalla/serilog-sinks-file-header</PackageProjectUrl>
         <PackageId>Serilog.Sinks.File.Header</PackageId>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     </PropertyGroup>
 
