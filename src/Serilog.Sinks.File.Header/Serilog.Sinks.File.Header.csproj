@@ -28,4 +28,8 @@
         <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
     </ItemGroup>
 
+    <ItemGroup>
+        <None Include="..\..\README.md" Pack="true" Visible="false" PackagePath="/" />
+    </ItemGroup>
+
 </Project>
